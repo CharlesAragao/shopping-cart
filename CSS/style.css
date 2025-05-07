@@ -1,0 +1,85 @@
+
+/* Fonte Montserrat */
+@import url(('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    /* Paleta de cores */
+    --color-01: #f9f9f9;
+    --color-02: #1f1f1f79;
+    --color-03: #a81717;
+    --color-04: #2a148d99;
+    --color-05: #7b0849;
+    --color-06: #0d6b0d99;
+    --color-07: #b5aa12;
+    --color-08: #ac4a0d99;
+    --color-09: #27bfe199;
+    --color-10: #b604b9;
+    --color-11: #e7c72699;
+    --color-11: #01aa6f99;
+}
+
+/* Reset*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Montserrat", sans-serif;
+    color: var(--color-05);
+}
+
+nav {
+    position: fixed;
+    padding: 0.5rem 4rem;
+    background-color: var(--color-02);
+    width: 100%;
+    top: 0;
+
+    ul {
+        list-style-type: none;
+        display: flex;
+        gap: 0.5rem;
+        justify-content: flex-end;
+
+        a {
+            color: var(--color-01);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            /* border: #b5aa12 solid; */
+            transition: all 0.5s;
+            /* font-weight: 700; */
+            letter-spacing: 0.1rem;
+
+            &:hover {
+                color: var(--color-08-04);
+            }
+        }
+    }
+}
+
+header {
+    background-color: dimgrey;
+    /* margin-top: 2rem; */
+    padding: 6rem 4rem 3rem;
+}
+
+main {
+    min-height: 100vh;
+}
+
+footer {
+    background-color: var(--color-05);
+    color: #f9f9f9;
+    min-height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 2rem 4rem;
+}
+
+main {
+    padding: 2rem 4rem;
+    min-height: 100vh;
+}
