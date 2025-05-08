@@ -30,7 +30,13 @@
 
 html {
     font-family: "Montserrat", sans-serif;
-    color: var(--color-02);
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #e0e0e0;
+    color: #232323;
 }
 
 nav {
@@ -121,6 +127,7 @@ main {
 }
 
 .product-action {
+    padding: 1rem;
     display: flex;
     justify-content: space-between;
 
