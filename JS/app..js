@@ -1,48 +1,62 @@
 
 // Lista de produtos (em JSON)
-const productList = 
-[
-    {
-       "id":1,
-       "image": "https://cdn.pixabay.com/photo/2020/04/19/02/20/control-5061603_1280.jpg",
-       "name": "Xbox Series S",
-       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi recusandae voluptas excepturi mollitia deleniti, cum delectus error fugiat rem, dolor minus perspiciatis, impedit nulla aliquam doloremque! Voluptas qui tenetur laboriosam",
-       "price": "R$ 23.99",
-       "createdAt": "07/05/2025",
-       "updateAt": "07/05/2025"
-    },
 
-    {
-        "id":2,
-        "image": "https://cdn.pixabay.com/photo/2021/10/07/20/46/playstation-6689793_1280.jpg", //"https://cdn.pixabay.com/photo/2022/01/07/10/38/playstation-controller-6921619_1280.jpg", //"https://cdn.pixabay.com/photo/2023/01/12/16/05/controller-7714412_1280.jpg",
-        "name": "Playstation 5",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi recusandae voluptas excepturi mollitia deleniti, cum delectus error fugiat rem, dolor minus perspiciatis, impedit nulla aliquam doloremque! Voluptas qui tenetur laboriosam",
-        "price": "R$ 55.99",
-        "createdAt": "07/05/2025",
-        "updateAt": "07/05/2025"
-     },
+// const productList = "";
+// [
+//     {
+//        "id":1,
+//        "image": "https://cdn.pixabay.com/photo/2020/04/19/02/20/control-5061603_1280.jpg",
+//        "name": "Xbox Series S",
+//        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi recusandae voluptas excepturi mollitia deleniti, cum delectus error fugiat rem, dolor minus perspiciatis, impedit nulla aliquam doloremque! Voluptas qui tenetur laboriosam",
+//        "price": 23.99,
+//        "createdAt": "07/05/2025",
+//        "updateAt": "07/05/2025"
+//     },
 
-     {
-        "id":3,
-        "image": "https://cdn.pixabay.com/photo/2022/06/08/00/55/gaming-console-7249447_1280.jpg",
-        "name": "Nitendo Switch",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi recusandae voluptas excepturi mollitia deleniti, cum delectus error fugiat rem, dolor minus perspiciatis, impedit nulla aliquam doloremque! Voluptas qui tenetur laboriosam",
-        "price": "R$ 55.99",
-        "createdAt": "07/05/2025",
-        "updateAt": "07/05/2025"
-     }
- ];
+//     {
+//         "id":2,
+//         "image": "https://cdn.pixabay.com/photo/2021/10/07/20/46/playstation-6689793_1280.jpg", //"https://cdn.pixabay.com/photo/2022/01/07/10/38/playstation-controller-6921619_1280.jpg", //"https://cdn.pixabay.com/photo/2023/01/12/16/05/controller-7714412_1280.jpg",
+//         "name": "Playstation 5",
+//         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi recusandae voluptas excepturi mollitia deleniti, cum delectus error fugiat rem, dolor minus perspiciatis, impedit nulla aliquam doloremque! Voluptas qui tenetur laboriosam",
+//         "price": 55.99,
+//         "createdAt": "07/05/2025",
+//         "updateAt": "07/05/2025"
+//      },
+
+//      {
+//         "id":3,
+//         "image": "https://cdn.pixabay.com/photo/2022/06/08/00/55/gaming-console-7249447_1280.jpg",
+//         "name": "Nitendo Switch",
+//         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi recusandae voluptas excepturi mollitia deleniti, cum delectus error fugiat rem, dolor minus perspiciatis, impedit nulla aliquam doloremque! Voluptas qui tenetur laboriosam",
+//         "price": 55.99",
+//         "createdAt": "07/05/2025",
+//         "updateAt": "07/05/2025"
+//      }
+//  ];
+
+// Busca os produtos na API
+function getProducts() {
+    // Usa a API Fetch nativa do JS para conectar na MockAPI (online)
+    const linkAPI = "https://67620a7446efb3732373870b.mockapi.io/api/product"       //"https://681ce1c8f74de1d219ae1b7d.mockapi.io/product";
+    // Faz a conexão com o API
+    fetch(linkAPI)
+    // Se tiver sucesso, converte o retorno para JSON
+    .then((response)  => response.json())
+    // Percorre a lista de produtos
+    .then(data => {
+        const productList = [];
+        productList.push(... data);
+        listProducts(productList);
+    })
+}
 
 
 
 
-
-
-
-
-
- function listProducts() {
+// Carrega os produtos na tela
+ function listProducts(productList) {
     const sectionProducts = document.querySelector("#sectionProducts");
+
     productList.forEach((product) => {
 
         // Cria o article (card)
@@ -82,7 +96,9 @@ const productList =
         card.appendChild(productAction);
 
         const h3 = document.createElement('h3');
-        h3.textContent = product.price;
+        h3.textContent = product.price.toLocaleStrring("pt-br", {
+            style: "currency", currency: "BRL"
+        });
         productAction.appendChild(h3);
 
         const btnAddCart = document.createElement('button');
@@ -92,8 +108,7 @@ const productList =
         
     })
  }
-
- listProducts();
+ getProducts();
 
 
 
